@@ -1,0 +1,311 @@
+Create a function taking a positive integer as its parameter and returning a string containing the Roman Numeral representation of that integer.
+
+创建一个以正整数为参数并返回包含该整数的罗马数字表示形式的字符串的函数。
+
+Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping any digit with a value of zero. In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in descending order: MDCLXVI.
+
+现代罗马数字是通过以最左边的数字开始并跳过值为零的任何数字来分别表示每个数字而编写的。在罗马数字1990被渲染: 1000 = m，900 = CM，90 = XC; 结果是 MCMXC。2008被写成2000 = MM，8 = VIII; 或者 MMVIII。1666年按降序使用每个罗马符号: MDCLXVI。
+
+Example:
+
+例子:
+
+solution(1000); // => "M"
+Help:
+
+帮助:
+
+Symbol    Value
+I          1
+V          5
+X          10
+L          50
+C          100
+D          500
+M          1,000
+Remember that there can't be more than 3 identical symbols in a row.
+
+记住，一行中不能有超过3个相同的符号。
+
+More about roman numerals - http://en.wikipedia.org/wiki/Roman_numerals
+
+更多关于罗马数字的 http://en.wikipedia.org/wiki/roman_numerals
+
+
+
+
+
+
+
+
+
+///////////我的韩币写法///////////////////////////////////////////////////////////////////////////
+#include <stdio.h>
+#include <string.h>
+
+char *solution(int);
+char a1[20];
+
+int main(void)
+{
+while (1)
+{
+
+    int number = 0;
+    puts("要输入1~3999的数字哦");
+
+    scanf("%d", &number);
+
+    printf("%d代表的罗马数字是%s",number,solution(number));
+}
+    return 0;
+}
+
+char *solution(int n)
+{
+    // Your code here
+    int a, b, c, d;
+    char b1[20], c1[20], d1[20];
+
+    a = (n / 1000)%10;
+    b = (n /100) % 10;
+    c = (n/10)%10;
+    d = n%10;
+//aaaaaaaaaaaaaaaaaaaaaaaaaaa
+    switch (a)
+    {
+    case 0:
+        a1[0]=NULL;
+        break;
+    case 1:
+        a1[0] ='M';
+        a1[1] = NULL;
+        break;
+    case 2:
+        a1[0] = 'M' ;
+        a1[1] = 'M';
+        a1[2] = NULL;
+        break;
+    case 3:
+        a1[0] = 'M';
+        a1[1] = 'M';
+        a1[2] = 'M';
+        a1[3] = NULL;
+        break;
+    }
+//bbbbbbbbbbbbbbbbbbbbbbbbbbbb
+        switch (b)
+        {
+        case 0:
+            b1[0] = NULL;
+            break;
+        case 1:
+            b1[0] = 'C';
+            b1[1] = NULL;
+            break;
+        case 2:
+            b1[0] = 'C';
+            b1[1] = 'C';
+            b1[2] = NULL;
+            break;
+        case 3:
+            b1[0] = 'C';
+            b1[1] = 'C';
+            b1[2] = 'C';
+            b1[3] = NULL;
+            break;
+        case 4:
+            b1[0] = 'C';
+            b1[1] = 'D';
+            b1[2] = NULL;
+            break;
+        case 5:
+            b1[0] = 'D';
+            b1[1] = NULL;
+            break;
+        case 6:
+            b1[0] = 'D';
+            b1[1] = 'C';
+            b1[2] = NULL;
+            break;
+        case 7:
+            b1[0] = 'D';
+            b1[1] = 'C';
+            b1[2] = 'C';
+            b1[3] = NULL;
+            break;
+        case 8:
+            b1[0] = 'D';
+            b1[1] = 'C';
+            b1[2] = 'C';
+            b1[3] = 'C';
+            b1[4] = NULL;
+            break;
+        case 9:
+            b1[0] = 'C';
+            b1[1] = 'M';
+            b1[2] = NULL;
+            break;
+        }
+//cccccccccccccccccccccccccccc
+        switch (c)
+        {
+        case 0:
+            c1[0] = NULL;
+            break;
+        case 1:
+            c1[0] = 'X';
+            c1[1] = NULL;
+            break;
+        case 2:
+            c1[0] = 'X';
+            c1[1] = 'X';
+            c1[2] = NULL;
+            break;
+        case 3:
+            c1[0] = 'X';
+            c1[1] = 'X';
+            c1[2] = 'X';
+            c1[3] = NULL;
+            break;
+        case 4:
+            c1[0] = 'X';
+            c1[1] = 'L';
+            c1[2] = NULL;
+            break;
+        case 5:
+            c1[0] = 'L';
+            c1[1] = NULL;
+            break;
+        case 6:
+            c1[0] = 'L';
+            c1[1] = 'X';
+            c1[2] = NULL;
+            break;
+        case 7:
+            c1[0] = 'L';
+            c1[1] = 'X';
+            c1[2] = 'X';
+            c1[3] = NULL;
+            break;
+        case 8:
+            c1[0] = 'L';
+            c1[1] = 'X';
+            c1[2] = 'X';
+            c1[3] = 'X';
+            c1[4] = NULL;
+            break;
+        case 9:
+            c1[0] = 'X';
+            c1[1] = 'C';
+            c1[2] = NULL;
+            break;
+        }
+
+//ddddddddddddddddddddddddddd
+        switch (d)
+        {
+        case 0:
+            d1[0] = NULL;
+            break;
+        case 1:
+            d1[0] = 'I';
+            d1[1] = NULL;
+            break;
+        case 2:
+            d1[0] = 'I';
+            d1[1] = 'I';
+            d1[2] = NULL;
+            break;
+        case 3:
+            d1[0] = 'I';
+            d1[1] = 'I';
+            d1[2] = 'I';
+            d1[3] = NULL;
+            break;
+        case 4:
+            d1[0] = 'I';
+            d1[1] = 'V';
+            d1[2] = NULL;
+            break;
+        case 5:
+            d1[0] = 'V';
+            d1[1] = NULL;
+            break;
+        case 6:
+            d1[0] = 'V';
+            d1[1] = 'I';
+            d1[2] = NULL;
+            break;
+        case 7:
+            d1[0] = 'V';
+            d1[1] = 'I';
+            d1[2] = 'I';
+            d1[3] = NULL;
+            break;
+        case 8:
+            d1[0] = 'V';
+            d1[1] = 'I';
+            d1[2] = 'I';
+            d1[3] = 'I';
+            d1[4] = NULL;
+            break;
+        case 9:
+            d1[0] = 'I';
+            d1[1] = 'X';
+            d1[2] = NULL;
+            break;
+        }
+/////////////////////////////
+        strcat(a1,b1);
+        strcat(a1,c1);
+        strcat(a1,d1);
+//////////////////////////
+        return a1;
+        }
+           
+           
+           
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////思路一致的//////////////////////////////////////
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *solution(int n) {
+  static char *R1[]    = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+  static char *R10[]   = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+  static char *R100[]  = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+  static char *R1000[] = {"", "M", "MM", "MMM" };
+  
+  char *buf;
+  asprintf(&buf, "%s%s%s%s", R1000[n/1000], R100[n%1000/100], R10[n%100/10], R1[n%10]);
+  return buf;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////大佬的//////////////////////////////////////
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *solution(int n) {
+  // Your code here
+  char *re;
+    re=(char*)calloc(sizeof(char),50);
+    int base[13]={ 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+    char* str[13]={ "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX",
+                    "V", "IV", "I"};
+    int i=0;
+    while(n!=0){
+        if(n>=base[i]){
+            n-=base[i];
+            strcat(re,str[i]);
+        }else{
+            i++;
+        }
+    }
+  return re;
+}
+
+     
